@@ -53,7 +53,7 @@ bash Tomomi.sh
 
 ## See how this works! :eyes:
 
-<a href="<https://www.youtube.com/embed/hGLh3bI8WLg"/a>
+[![Watch the video](https://www.youtube.com/embed/hGLh3bI8WLg)
 
 # FAQ :speech_balloon:
 
