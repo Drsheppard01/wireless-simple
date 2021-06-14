@@ -34,6 +34,12 @@ Please know that this will be not 100% maintained, if you have suggestions for i
 
 Note: If your desired driver is not there or does not work please open an issue.
 
+# Supported wifi adapters
+
+- Tenda U12 (AC1300)
+- 
+
+
 # Preparations :clipboard:
 Before you start installing the WiFi driver, make sure you have all the updates installed. If you have previously installed a kernel update, restart your computer to avoid errors during installation.
 
