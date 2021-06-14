@@ -34,7 +34,7 @@ Please know that this will be not 100% maintained, if you have suggestions for i
 
 Note: If your desired driver is not there or does not work please open an issue.
 
-# Supported wifi adapters
+# Supported wifi adapters 🖥️
 
 - Tenda U12 (AC1300)
 - 
