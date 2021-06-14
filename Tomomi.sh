@@ -49,8 +49,8 @@ DRV=$(zenity --list --radiolist --height=300 --width 200 --title="$NAME $VER" --
 PASSWORD=$(zenity --password --title "The Script will now install the driver $DRV, enter your password to proceed")
 
 if [[ $DRV == *"RTL8812au"* ]]; then
-git clone https://github.com/gordboy/rtl8812au-5.6.4.2.git
-cd rtl8812au-5.6.4.2
+git clone https://github.com/gordboy/rtl8812au-5.9.3.2.git
+cd rtl8812au-5.9.3.2
 echo -e "\e[40;38;5;82m Building driver \e[30;48;5;82m\e[0m"
 make
 echo -e "\e[40;38;5;82m Installing driver \e[30;48;5;82m\e[0m"
@@ -58,7 +58,7 @@ echo $PASSWORD | sudo -S "make install"
 echo $PASSWORD | sudo -S "modprobe 8812au"
 echo -e "\e[40;38;5;82m Done :) \e[30;48;5;82m You can now use your wifi adapter! \e[0m"
 cd /home/$USER/Tomomi
-rm -d -r rtl8812au-5.6.4.2
+rm -d -r rtl8812au-5.9.3.2
 fi
 
 if [[ $DRV == *"RTL8188/eu/s/etv"* ]]; then
