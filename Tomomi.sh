@@ -58,7 +58,7 @@ echo $PASSWORD | sudo -S "make install"
 echo $PASSWORD | sudo -S "modprobe 8812au"
 echo -e "\e[40;38;5;82m Done :) \e[30;48;5;82m You can now use your wifi adapter! \e[0m"
 cd /home/$USER/Tomomi
-rm -d -r rtl8812au-5.9.3.2
+rm -d -r 8812au-20210629
 fi
 
 if [[ $DRV == *"RTL8188/eu/s/etv"* ]]; then
@@ -68,8 +68,8 @@ cd rtl8188eus
 echo -e "\e[40;38;5;82m Building driver \e[30;48;5;82m\e[0m"
 make all
 echo -e "\e[40;38;5;82m Installing driver \e[30;48;5;82m\e[0m"
-echo $PASSWORD | sudo -S make install
-echo $PASSWORD | sudo -S modprobe 8188eu
+echo $PASSWORD | sudo -S "make install"
+echo $PASSWORD | sudo -S "modprobe 8188eu"
 echo -e "\e[40;38;5;82mDone :) \e[30;48;5;82mYou can now use your wifi adapter!\e[0m"
 cd /home/$USER/Tomomi
 rm -d -r rtl8723de
@@ -83,8 +83,8 @@ cd rtl8821ce
 echo -e "\e[40;38;5;82m Building driver \e[30;48;5;82m\e[0m"
 make
 echo -e "\e[40;38;5;82m Installing driver \e[30;48;5;82m\e[0m"
-echo $PASSWORD | sudo -S make install
-echo $PASSWORD | sudo -S modprobe 8821ce
+echo $PASSWORD | sudo -S "make install"
+echo $PASSWORD | sudo -S "modprobe 8821ce"
 echo -e "\e[40;38;5;82mDone :) \e[30;48;5;82mYou can now use your wifi adapter!\e[0m"
 cd /home/$USER/Tomomi
 rm -d -r rtl8821ce
@@ -98,8 +98,8 @@ cd rtl8723de
 echo -e "\e[40;38;5;82m Building driver \e[30;48;5;82m\e[0m"
 make
 echo -e "\e[40;38;5;82m Installing driver \e[30;48;5;82m\e[0m"
-echo $PASSWORD | sudo -S make install
-echo $PASSWORD | sudo -S modprobe 8723de
+echo $PASSWORD | sudo -S "make install"
+echo $PASSWORD | sudo -S "modprobe 8723de"
 echo -e "\e[40;38;5;82mDone :) \e[30;48;5;82mYou can now use your wifi adapter!\e[0m"
 cd /home/$USER/Tomomi
 rm -d -r rtl8723de
@@ -112,8 +112,8 @@ cd rtl8188fu
 echo -e "\e[40;38;5;82mBuilding driver\e[30;48;5;82m\e[0m"
 make
 echo -e "\e[40;38;5;82m Installing driver \e[30;48;5;82m\e[0m"
-echo $PASSWORD | sudo -S make install
-echo $PASSWORD | sudo -S modprobe rtl8188fu
+echo $PASSWORD | sudo -S "make install"
+echo $PASSWORD | sudo -S "modprobe rtl8188fu"
 echo -e "\e[40;38;5;82mDone :) \e[30;48;5;82mYou can now use your wifi adapter!\e[0m"
 cd /home/$USER/Tomomi
 rm -d -r rtl8188fu
@@ -125,8 +125,8 @@ cd rtl88x2bu
 echo -e "\e[40;38;5;82mBuilding driver\e[30;48;5;82m\e[0m"
 make
 echo -e "\e[40;38;5;82m Installing driver \e[30;48;5;82m\e[0m"
-echo $PASSWORD | sudo -S make install
-echo $PASSWORD | sudo -S modprobe 88x2bu
+echo $PASSWORD | sudo -S "make install"
+echo $PASSWORD | sudo -S "modprobe 88x2bu"
 echo -e "\e[40;38;5;82mDone :) \e[30;48;5;82mYou can now use your wifi adapter!\e[0m"
 cd /home/$USER/Tomomi
 rm -d -r rtl88x2bu
