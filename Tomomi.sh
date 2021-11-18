@@ -1,8 +1,8 @@
 #!/bin/bash
-NAME=Tomomi
+NAME=wireless-simple
 VER=Live
 
-echo -e "\e[32mCopyright (c) 2019-2020, Alexander Vereeken All rights reserved."
+echo -e "\e[32mCopyright (c) 2021, Georgii Bogdanov All rights reserved. Copyright (c) 2019-2020, Alexander Vereeken All rights reserved."
 echo -e "\e[93mWelcome to $NAME $VER have fun!"
 
 Selection=$(zenity --list --radiolist --height=100 --width 300 --title="$NAME $VER" --text "Welome to Tomomi $VER" --hide-header --column "$NAME" --column "Item" FALSE "Install dependencies" FALSE "Install driver")
