@@ -21,8 +21,6 @@
 
 - RTL8812au by [gordboy](https://github.com/gordboy/rtl8812au-5.9.3.2)
 - RTL8188eu, RTL8188eus & RTL8188etv by [quckreflex](https://github.com/quickreflex/rtl8188eus)
-- RTL8821ce by [tomaspinho](https://github.com/tomaspinho/rtl8821ce)
-- RTL8723de by [smlinux](https://github.com/smlinux/rtl8723de)
 - RTL8188fu by [kelebek333](https://github.com/kelebek333/rtl8188fu)
 - RTL88x2bu by [cilynx](https://github.com/cilynx/rtl88x2BU_WiFi_linux_v5.3.1_27678.20180430_COEX20180427-5959)
 
