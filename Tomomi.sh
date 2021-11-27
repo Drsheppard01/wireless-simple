@@ -75,6 +75,17 @@ cd /home/$USER/Tomomi
 rm -d -r rtl8723de
 fi
 
+if [[ $DRV == *"RTL8821ce"* ]]; then
+echo $PASSWORD | sudo -S "modprobe 8821ce"
+echo -e "\e[40;38;5;82mDone :) \e[30;48;5;82mYou can now use your wifi adapter!\e[0m"
+fi
+
+if [[ $DRV == *"RTL8723de"* ]]; then
+echo $PASSWORD | sudo -S "modprobe 8723de"
+echo -e "\e[40;38;5;82mDone :) \e[30;48;5;82mYou can now use your wifi adapter!\e[0m"
+fi
+
+
 if [[ $DRV == *"RTL8188fu"* ]]; then
 echo -e "\e[40;38;5;82mDownloading driver\e[30;48;5;82m\e[0m"
 git clone https://github.com/kelebek333/rtl8188fu
