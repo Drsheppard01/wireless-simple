@@ -9,7 +9,7 @@ Selection=$(zenity --list --radiolist --height=100 --width 300 --title="$NAME $V
 
 if [[ $Selection == *"Install dependencies"* ]]; then
 
-Distro=$(zenity --list --radiolist --height=300 --width 300 --title="$NAME $VER" --text "Now select a distro" --hide-header --column "$NAME" --column "Item" FALSE "Arch/Manjaro/Antergos" FALSE "Solus" FALSE "Ubuntu" FALSE "Sabayon" FALSE "OpenSUSE")
+Distro=$(inxi -S)
 
 PASSWORD=$(zenity --password --title "The Script will now install the requiered dependencies, enter your password to proceed")
 
