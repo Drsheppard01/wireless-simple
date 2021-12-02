@@ -11,10 +11,11 @@
 # Supported distributions :computer:
 
 - Arch
+- OpenSUSE
+- Fedora (experimental, need more tests)
+- Sabayon
 - Solus
 - Ubuntu
-- Sabayon
-- OpenSUSE
 
 
 # Supported realtek wifi drivers :wrench:
