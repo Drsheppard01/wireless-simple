@@ -1,0 +1,2 @@
+- [ ] Add DKMS support for Fedora, Arch, Ubuntu
+- [ ] More, more distros
