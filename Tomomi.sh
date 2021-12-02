@@ -19,6 +19,11 @@ AKH=$(zenity --list --radiolist --height=300 --width 200 --title="$NAME $VER" --
 echo $PASSWORD | sudo -S pacman -S $AKH
 fi
 
+
+if [[ $Distro == *"Fedora"* ]]; then
+echo $PASSWORD | sudo -S dnf install -y make git kernel-headers kernel-devel elfutils-libelf-devel dkms
+fi
+
 if [[ $Distro == *"OpenSUSE"* ]]; then
 echo $PASSWORD | sudo -S zypper install make kernel-source
 fi
