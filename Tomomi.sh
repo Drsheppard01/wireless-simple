@@ -41,7 +41,7 @@ echo $PASSWORD | sudo -S eopkg it $SKH
 fi
 
 if [[ $Distro == *"Ubuntu"* ]]; then
-echo $PASSWORD | sudo -S apt install -y git build-essential make autoconf libtool gcc gettext
+echo $PASSWORD | sudo -S apt install -y git build-essential make autoconf libtool gcc gettext linux-headers-$(uname -r)
 fi
 fi
 
