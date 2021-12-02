@@ -19,14 +19,8 @@ AKH=$(zenity --list --radiolist --height=300 --width 200 --title="$NAME $VER" --
 echo $PASSWORD | sudo -S pacman -S $AKH
 fi
 
-if [[ $Distro == *"Solus"* ]]; then
-echo $PASSWORD | sudo -S eopkg it gcc binutils git make
-SKH=$(zenity --list --radiolist --height=300 --width 100 --title="$NAME $VER" --text "What kernel headers do you want to install?" --hide-header --column "$NAME" --column "Item" FALSE "linux-current-headers" FALSE "linux-lts-headers")
-echo $PASSWORD | sudo -S eopkg it $SKH
-fi
-
-if [[ $Distro == *"Ubuntu"* ]]; then
-echo $PASSWORD | sudo -S apt install -y git build-essential make autoconf libtool gcc gettext
+if [[ $Distro == *"OpenSUSE"* ]]; then
+echo $PASSWORD | sudo -S zypper install make kernel-source
 fi
 
 if [[ $Distro == *"Sabayon"* ]]; then
@@ -35,8 +29,14 @@ SS=$(zenity --list --radiolist --height=300 --width 200 --title="$NAME $VER" --t
 echo $PASSWORD | sudo -S equo i sabayon-sources-$SS
 fi
 
-if [[ $Distro == *"OpenSUSE"* ]]; then
-echo $PASSWORD | sudo -S zypper install make kernel-source
+if [[ $Distro == *"Solus"* ]]; then
+echo $PASSWORD | sudo -S eopkg it gcc binutils git make
+SKH=$(zenity --list --radiolist --height=300 --width 100 --title="$NAME $VER" --text "What kernel headers do you want to install?" --hide-header --column "$NAME" --column "Item" FALSE "linux-current-headers" FALSE "linux-lts-headers")
+echo $PASSWORD | sudo -S eopkg it $SKH
+fi
+
+if [[ $Distro == *"Ubuntu"* ]]; then
+echo $PASSWORD | sudo -S apt install -y git build-essential make autoconf libtool gcc gettext
 fi
 fi
 
@@ -76,13 +76,33 @@ rm -d -r rtl8723de
 fi
 
 if [[ $DRV == *"RTL8821ce"* ]]; then
+GB=$(zenity --list --radiolist --height=100 --width 200 --title="$NAME $VER" --text "The driver $DRV has several branches which do you want to use?" --hide-header --column "$NAME" --column "Item" FALSE "fix-compilation-5.1" FALSE "integrate-v5.2.5_1" FALSE "v5.5.2" FALSE "master")
+echo -e "\e[40;38;5;82mDownloading driver\e[30;48;5;82m\e[0m"
+git clone --single-branch --branch $GB https://github.com/tomaspinho/rtl8821ce.git
+cd rtl8821ce
+echo -e "\e[40;38;5;82m Building driver \e[30;48;5;82m\e[0m"
+make
+echo -e "\e[40;38;5;82m Installing driver \e[30;48;5;82m\e[0m"
+echo $PASSWORD | sudo -S "make install"
 echo $PASSWORD | sudo -S "modprobe 8821ce"
 echo -e "\e[40;38;5;82mDone :) \e[30;48;5;82mYou can now use your wifi adapter!\e[0m"
+cd /home/$USER/Tomomi
+rm -d -r rtl8821ce
 fi
 
 if [[ $DRV == *"RTL8723de"* ]]; then
+GB=$(zenity --list --radiolist --height=300 --width 300 --title="$NAME $VER" --text "The driver $DRV has several branches which do you want to use?" --hide-header --column "$NAME" --column "Item" FALSE "4.10-down" FALSE "4.11-up" FALSE "4.15-up" FALSE "5.0-up" FALSE "current")
+echo -e "\e[40;38;5;82mDownloading driver\e[30;48;5;82m\e[0m"
+git clone --single-branch --branch $GB https://github.com/smlinux/rtl8723de.git
+cd rtl8723de
+echo -e "\e[40;38;5;82m Building driver \e[30;48;5;82m\e[0m"
+make
+echo -e "\e[40;38;5;82m Installing driver \e[30;48;5;82m\e[0m"
+echo $PASSWORD | sudo -S "make install"
 echo $PASSWORD | sudo -S "modprobe 8723de"
 echo -e "\e[40;38;5;82mDone :) \e[30;48;5;82mYou can now use your wifi adapter!\e[0m"
+cd /home/$USER/Tomomi
+rm -d -r rtl8723de
 fi
 
 
