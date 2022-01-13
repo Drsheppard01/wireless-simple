@@ -150,6 +150,7 @@ echo -e "\e[40;38;5;82mDone :) \e[30;48;5;82mYou can now use your wifi adapter!\
 cd /home/$USER/Tomomi
 rm -d -r rtl8192eu-linux
 fi
+fi 
 
 if [[ $? == *"0"* ]]; then
 notify-send "Thanks for using $NAME and have a great day!"
