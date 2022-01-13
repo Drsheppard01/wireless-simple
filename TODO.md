@@ -1,2 +1,4 @@
-- [ ] Add DKMS support for Fedora, Arch, Ubuntu
+- [ ] Add DKMS support for all distros which support this feature
+- [ ] Auto-detect drivers and distros
+- [ ] Replace sudo -s instead pkexec /bin/bash
 - [ ] More, more distros
