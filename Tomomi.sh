@@ -9,7 +9,7 @@ Selection=$(zenity --list --radiolist --height=100 --width 300 --title="$NAME $V
 
 if [[ $Selection == *"Install dependencies"* ]]; then
 
-Distro=$(inxi -S)
+Distro=$(zenity --list --radiolist --height=300 --width 300 --title="$NAME $VER" --text "Now select a distro" --hide-header --column "$NAME" --column "Item" FALSE "Arch/Manjaro/Antergos" FALSE "Fedora" FALSE "OpenSUSE" FALSE "Sabayon" FALSE "Solus" FALSE "Ubuntu")
 
 PASSWORD=$(zenity --password --title "The Script will now install the requiered dependencies, enter your password to proceed")
 
@@ -18,7 +18,6 @@ echo $PASSWORD | sudo -S pacman -S bc dkms git
 AKH=$(zenity --list --radiolist --height=300 --width 200 --title="$NAME $VER" --text "What kernel headers do you want to install?" --hide-header --column "$NAME" --column "Item" FALSE "linux-headers" FALSE "linux-lts-headers" FALSE "linux-zen-headers")
 echo $PASSWORD | sudo -S pacman -S $AKH
 fi
-
 
 if [[ $Distro == *"Fedora"* ]]; then
 echo $PASSWORD | sudo -S dnf install -y make git kernel-headers kernel-devel dkms
@@ -49,7 +48,7 @@ if [[ $Selection == *"Install driver"* ]]; then
 cd /home/$USER
 mkdir /home/$USER/$NAME
 cd /home/$USER/$NAME
-DRV=$(zenity --list --radiolist --height=300 --width 200 --title="$NAME $VER" --text "What driver?" --hide-header --column "$NAME" --column "Item" FALSE "RTL8812au" FALSE "RTL8188/eu/s/etv" FALSE "RTL8821ce" FALSE "RTL8723de" FALSE "RTL8188fu" FALSE "RTL88x2bu")
+DRV=$(zenity --list --radiolist --height=300 --width 200 --title="$NAME $VER" --text "What driver?" --hide-header --column "$NAME" --column "Item" FALSE "RTL8812au" FALSE "RTL8821ce" FALSE "RTL8192eu" FALSE "RTL8188/eu/s/etv" FALSE "RTL8723de" FALSE "RTL8188fu" FALSE "RTL88x2bu")
 
 PASSWORD=$(zenity --password --title "The Script will now install the driver $DRV, enter your password to proceed")
 
@@ -66,20 +65,6 @@ cd /home/$USER/Tomomi
 rm -d -r 8812au-20210629
 fi
 
-if [[ $DRV == *"RTL8188/eu/s/etv"* ]]; then
-GB=$(zenity --list --radiolist --height=300 --width 200 --title="$NAME $VER" --text "The driver $DRV has several branches which do you want to use?" --hide-header --column "$NAME" --column "Item" FALSE "v3.5.9" FALSE "v5.2.2.4" FALSE "v5.3.9")
-git clone --single-branch --branch $GB https://github.com/quickreflex/rtl8188eus.git
-cd rtl8188eus
-echo -e "\e[40;38;5;82m Building driver \e[30;48;5;82m\e[0m"
-make all
-echo -e "\e[40;38;5;82m Installing driver \e[30;48;5;82m\e[0m"
-echo $PASSWORD | sudo -S "make install"
-echo $PASSWORD | sudo -S "modprobe 8188eu"
-echo -e "\e[40;38;5;82mDone :) \e[30;48;5;82mYou can now use your wifi adapter!\e[0m"
-cd /home/$USER/Tomomi
-rm -d -r rtl8723de
-fi
-
 if [[ $DRV == *"RTL8821ce"* ]]; then
 GB=$(zenity --list --radiolist --height=100 --width 200 --title="$NAME $VER" --text "The driver $DRV has several branches which do you want to use?" --hide-header --column "$NAME" --column "Item" FALSE "fix-compilation-5.1" FALSE "integrate-v5.2.5_1" FALSE "v5.5.2" FALSE "master")
 echo -e "\e[40;38;5;82mDownloading driver\e[30;48;5;82m\e[0m"
@@ -93,6 +78,20 @@ echo $PASSWORD | sudo -S "modprobe 8821ce"
 echo -e "\e[40;38;5;82mDone :) \e[30;48;5;82mYou can now use your wifi adapter!\e[0m"
 cd /home/$USER/Tomomi
 rm -d -r rtl8821ce
+fi
+
+if [[ $DRV == *"RTL8188/eu/s/etv"* ]]; then
+GB=$(zenity --list --radiolist --height=300 --width 200 --title="$NAME $VER" --text "The driver $DRV has several branches which do you want to use?" --hide-header --column "$NAME" --column "Item" FALSE "v3.5.9" FALSE "v5.2.2.4" FALSE "v5.3.9")
+git clone --single-branch --branch $GB https://github.com/quickreflex/rtl8188eus.git
+cd rtl8188eus
+echo -e "\e[40;38;5;82m Building driver \e[30;48;5;82m\e[0m"
+make all
+echo -e "\e[40;38;5;82m Installing driver \e[30;48;5;82m\e[0m"
+echo $PASSWORD | sudo -S "make install"
+echo $PASSWORD | sudo -S "modprobe 8188eu"
+echo -e "\e[40;38;5;82mDone :) \e[30;48;5;82mYou can now use your wifi adapter!\e[0m"
+cd /home/$USER/Tomomi
+rm -d -r rtl8723de
 fi
 
 if [[ $DRV == *"RTL8723de"* ]]; then
@@ -124,6 +123,7 @@ echo -e "\e[40;38;5;82mDone :) \e[30;48;5;82mYou can now use your wifi adapter!\
 cd /home/$USER/Tomomi
 rm -d -r rtl8188fu
 fi
+
 if [[ $DRV == *"RTL88x2bu"* ]]; then
 echo -e "\e[40;38;5;82mDownloading driver\e[30;48;5;82m\e[0m"
 git clone https://github.com/cilynx/rtl88x2bu.git
@@ -137,6 +137,18 @@ echo -e "\e[40;38;5;82mDone :) \e[30;48;5;82mYou can now use your wifi adapter!\
 cd /home/$USER/Tomomi
 rm -d -r rtl88x2bu
 fi
+
+if [[ $DRV == *"rtl8192eu"* ]]; then
+git clone https://github.com/clnhub/rtl8192eu-linux
+cd rtl8192eu-linux
+echo -e "\e[40;38;5;82m Building driver \e[30;48;5;82m\e[0m"
+make
+echo -e "\e[40;38;5;82m Installing driver \e[30;48;5;82m\e[0m"
+echo $PASSWORD | sudo -S "make install"
+echo $PASSWORD | sudo -S "modprobe rtl8192eu"
+echo -e "\e[40;38;5;82mDone :) \e[30;48;5;82mYou can now use your wifi adapter!\e[0m"
+cd /home/$USER/Tomomi
+rm -d -r rtl8192eu-linux
 fi
 
 if [[ $? == *"0"* ]]; then
