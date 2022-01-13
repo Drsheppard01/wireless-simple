@@ -1,4 +1,5 @@
 - [ ] Add DKMS support for all distros which support this feature
 - [ ] Auto-detect drivers and distros
-- [ ] Replace sudo -s instead pkexec /bin/bash
+- [ ] Replace pkexec /bin/bash instead sudo -s
 - [ ] More, more distros
+- [ ] Support binenv and eget
