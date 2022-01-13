@@ -3,3 +3,4 @@
 - [ ] Replace pkexec /bin/bash instead sudo -s
 - [ ] More, more distros
 - [ ] Support binenv and eget
+- [ ] Modern PyGObject gui
