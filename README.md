@@ -26,6 +26,7 @@
 - RTL8723de by [smlinux](https://github.com/smlinux/rtl8723de)
 - RTL8188fu by [kelebek333](https://github.com/kelebek333/rtl8188fu)
 - RTL88x2bu by [cilynx](https://github.com/cilynx/rtl88x2BU_WiFi_linux_v5.3.1_27678.20180430_COEX20180427-5959)
+- RTL8192eu by [clnhub](https://github.com/clnhub/rtl8192eu-linux)
 
 Note: If your desired driver is not there or does not work please open an issue.
 
