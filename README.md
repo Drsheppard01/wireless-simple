@@ -20,7 +20,7 @@
 
 # Supported realtek wifi drivers :wrench:
 
-- RTL8812au by [gordboy](https://github.com/morrownr/8812au-20210629)
+- RTL8812au by [morrownr](https://github.com/morrownr/8812au-20210629)
 - RTL8188eu, RTL8188eus & RTL8188etv by [quckreflex](https://github.com/quickreflex/rtl8188eus)
 - RTL8821ce by [tomaspinho](https://github.com/tomaspinho/rtl8821ce)
 - RTL8723de by [smlinux](https://github.com/smlinux/rtl8723de)
