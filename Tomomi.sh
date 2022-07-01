@@ -11,13 +11,13 @@ if [[ $Selection == *"Install dependencies"* ]]; then
 
 if grep -qs "ubuntu" /etc/os-release; then
 	Distro="ubuntu"
-if grep -qs "fedora" /etc/fedora-release; then
+elif grep -qs "fedora" /etc/fedora-release; then
 	Distro="fedora"
-if grep -qs "arch" /etc/os-release; then
+elif grep -qs "arch" /etc/os-release; then
 	Distro="arch"
-if grep -qs "opensuse" /usr/lib/os-release; then
+elif grep -qs "opensuse" /usr/lib/os-release; then
 	Distro="opensuse"
-if grep -qs "solus" /etc/os-release; then
+elif grep -qs "solus" /etc/os-release; then
 	Distro="solus"
 
 PASSWORD=$(pkexec /bin/bash)
