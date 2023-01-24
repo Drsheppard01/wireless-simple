@@ -74,6 +74,19 @@ cd /home/$USER/Tomomi
 rm -d -r 8812au-20210629
 fi
 
+if [[ $DRV == *"RTL8811CU"* ]]; then
+git clone https://github.com/fastoe/RTL8811CU.git
+cd 8812au-20210629
+echo -e "\e[40;38;5;82m Building driver \e[30;48;5;82m\e[0m"
+make
+echo -e "\e[40;38;5;82m Installing driver \e[30;48;5;82m\e[0m"
+echo $PASSWORD | sudo -S "make install"
+echo $PASSWORD | sudo -S "modprobe 8811cu"
+echo -e "\e[40;38;5;82m Done :) \e[30;48;5;82m You can now use your wifi adapter! \e[0m"
+cd /home/$USER/Tomomi
+rm -d -r 8811CU
+fi
+
 if [[ $DRV == *"RTL8821ce"* ]]; then
 GB=$(zenity --list --radiolist --height=100 --width 200 --title="$NAME $VER" --text "The driver $DRV has several branches which do you want to use?" --hide-header --column "$NAME" --column "Item" FALSE "fix-compilation-5.1" FALSE "integrate-v5.2.5_1" FALSE "v5.5.2" FALSE "master")
 echo -e "\e[40;38;5;82mDownloading driver\e[30;48;5;82m\e[0m"
