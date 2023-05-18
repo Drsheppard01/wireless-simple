@@ -9,20 +9,11 @@ Selection=$(zenity --list --radiolist --height=100 --width 300 --title="$NAME $V
 
 if [[ $Selection == *"Install dependencies"* ]]; then
 
-if grep -qs "ubuntu" /etc/os-release; then
-	Distro="ubuntu"
-elif grep -qs "fedora" /etc/fedora-release; then
-	Distro="fedora"
-elif grep -qs "arch" /etc/os-release; then
-	Distro="arch"
-elif grep -qs "opensuse" /usr/lib/os-release; then
-	Distro="opensuse"
-elif grep -qs "solus" /etc/os-release; then
-	Distro="solus"
+Distro=$(zenity --list --radiolist --height=300 --width 300 --title="$NAME $VER" --text "Now select a distro" --hide-header --column "$NAME" --column "Item" FALSE "Arch/Manjaro/Antergos" FALSE "Solus" FALSE "Ubuntu" FALSE "Sabayon" FALSE "OpenSUSE")
 
-PASSWORD=$(pkexec /bin/bash)
+PASSWORD=$(zenity --password --title "The Script will now install the requiered dependencies, enter your password to proceed")
 
-if [[ $Distro == *"arch"* ]]; then
+if [[ $Distro == *"Arch"* ]]; then
 echo $PASSWORD | sudo -S pacman -S bc dkms git
 AKH=$(zenity --list --radiolist --height=300 --width 200 --title="$NAME $VER" --text "What kernel headers do you want to install?" --hide-header --column "$NAME" --column "Item" FALSE "linux-headers" FALSE "linux-lts-headers" FALSE "linux-zen-headers")
 echo $PASSWORD | sudo -S pacman -S $AKH
